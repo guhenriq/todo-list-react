@@ -1,0 +1,28 @@
+.item {
+    background-color: #272727;
+    height: 4rem;
+    color: white;
+    list-style: None;
+    box-shadow: 5px 5px 5px black;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    transition: height 0.5s;
+    
+    &:hover {
+        background-color: #4d4c4c;
+        height: 5rem;
+    }
+}
+
+.itemCompleted{
+    text-decoration: line-through;
+    color: green;
+}
+
+.icon {
+    cursor: pointer;
+}
