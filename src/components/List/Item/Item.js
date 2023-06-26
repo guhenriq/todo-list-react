@@ -3,26 +3,25 @@ import { useState } from "react"
 import { Delete, Edit } from "@mui/icons-material"
 import { CheckBox } from "../../Checkbox/Checkbox"
 
-export function Item({ id, name, handleRemoveById}) {
 
-    const [isCompleted, setIsCompleted] = useState()
+export function Item({ id, name, handleRemoveById, handleSelectedTask }) {
 
-    const removeItemById = () => {
-        handleRemoveById(id)
-    }
+    const [isCompleted, setIsCompleted] = useState('')
 
     const handleTaskCompleted = (taskStatus) => {
         setIsCompleted(taskStatus)
     }
 
     return (
-        <li className={style.item}>
-            <div><CheckBox handleTaskCompleted={handleTaskCompleted}/></div>
-            <div className={`${isCompleted ? style.itemCompleted : ""}`}>{ name }</div>
-            <div>
-                <button><Edit className={style.icon}/></button>
-                <button onClick={removeItemById}><Delete className={style.icon}/></button>
-            </div>
-        </li>
+       <>
+            <li className={style.item}>
+                <div><CheckBox handleTaskCompleted={handleTaskCompleted}/></div>
+                <div className={`${isCompleted ? style.itemCompleted : ""}`}>{ name }</div>
+                <div>
+                    <button onClick={() => handleSelectedTask(id)} data-bs-toggle="modal" data-bs-target="#exampleModal"><Edit className={style.icon}/></button>
+                    <button onClick={() => handleRemoveById(id)}><Delete className={style.icon}/></button>
+                </div>
+            </li>
+       </>
     )
 }
